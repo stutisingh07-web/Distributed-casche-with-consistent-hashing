@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Distributed Cache Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Distributed Cache Dashboard</h1>
+    <p id="status">Connecting...</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Cluster Stats</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Node</th><th>Items</th><th>Hits</th><th>Misses</th><th>Hit Rate</th><th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="stats-body"></tbody>
+      </table>
+      <p>Total items: <strong id="total-items">0</strong></p>
+    </section>
+
+    <section class="card">
+      <h2>Key Operations</h2>
+      <div class="form-row">
+        <input id="key" placeholder="key (e.g. user:42)" />
+        <input id="value" placeholder="value (for Set)" />
+        <input id="ttl" type="number" min="1" placeholder="TTL seconds (optional)" />
+      </div>
+      <div class="button-row">
+        <button id="btn-route">Find Node</button>
+        <button id="btn-get">Get</button>
+        <button id="btn-set">Set</button>
+        <button id="btn-delete" class="danger">Delete</button>
+      </div>
+      <pre id="key-result">Enter a key and choose an action.</pre>
+    </section>
+
+    <section class="card">
+      <h2>Nodes</h2>
+      <table>
+        <thead>
+          <tr><th>Name</th><th>URL</th><th></th></tr>
+        </thead>
+        <tbody id="nodes-body"></tbody>
+      </table>
+      <div class="form-row">
+        <input id="new-name" placeholder="node name (e.g. node4)" />
+        <input id="new-url" placeholder="http://localhost:8004" />
+        <button id="btn-add-node">Add Node</button>
+      </div>
+      <p id="node-message" class="message"></p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
